@@ -11,7 +11,7 @@ export default function CustomButton(props: any) {
     }
     // 改变标题
     const changeTitle = () => {
-        document.title = 'New Title'
+        
     }
 
     return (
