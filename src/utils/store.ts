@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { combine, persist, createJSONStorage } from "zustand/middleware";
 import { Updater } from "@/types/typing";
 import { cloneDeep } from "lodash-es"; 
-import { indexedDBStorage } from "@/app/utils/indexedDB-storage";
+import { indexedDBStorage } from "@/utils/indexedDB-storage";
 
 type SecondParam<T> = T extends (
   _f: infer _F,

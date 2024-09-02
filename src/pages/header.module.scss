@@ -5,4 +5,26 @@
     text-align: center;
     height:60px;
     background-color: #000000;
+    .login-container{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        .button{
+            display: inline-block;
+            max-width: 150px;
+            width: 74px;
+            font-size: 16px;
+            border-radius: 6px;
+            background-color: #FFE147;
+            height: 30px;
+            line-height: 30px;
+            font-weight: bold;
+            color: #000000;
+            cursor: pointer;
+        }
+        .login{
+            margin-right: 15px;
+        }
+    }
 }
