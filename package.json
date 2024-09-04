@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.21.1",
+    "@ant-design/icons": "^5.4.0",
     "@ant-design/nextjs-registry": "^1.0.1",
     "@ant-design/pro-components": "^2.7.15",
     "antd": "^5.20.3",

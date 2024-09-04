@@ -1,6 +1,7 @@
 'use client'
 import dynamic from 'next/dynamic'
 import { Header } from './header'
+import { Footer } from '@/components/footer'
 import { Path } from '@/types/constant'
 import LoadingIcon from "../icons/three-dots.svg";
 import BotIcon from "../icons/bot.svg";
@@ -15,8 +16,8 @@ import {
 export function Loading(props: { noLogo?: boolean }) {
     return (
         <div className={styles["loading-content"] + " no-dark"}>
-        {!props.noLogo && <BotIcon />}
-        <LoadingIcon />
+            {!props.noLogo && <BotIcon />}
+            <LoadingIcon />
         </div>
     );
 }
@@ -44,6 +45,7 @@ function Screen(){
                         <Route path={Path.HOME} element={<div />}></Route>
                     </Routes>
                 </WindowContent>
+                <Footer />
             </>
         )
     }
