@@ -17,7 +17,7 @@ export function Loading(props: { noLogo?: boolean }) {
     return (
         <div className={styles["loading-content"] + " no-dark"}>
             {!props.noLogo && <BotIcon />}
-            <LoadingIcon />
+            {/* <LoadingIcon></LoadingIcon> */}
         </div>
     );
 }
@@ -30,9 +30,9 @@ function WindowContent({ children }: Readonly<{ children: React.ReactNode }>) {
     )
 }
 
-/* const Content = dynamic(async() => (await import('./content')).Content, { 
+const Content = dynamic(async() => (await import('./content')).Content, { 
     loading: () => <Loading noLogo />
-}) */
+})
 
 const User = dynamic(async () => (await import("../components/user")).User, {
     loading: () => <Loading noLogo />,
@@ -46,6 +46,7 @@ function Screen(){
                 <Header />
                 <WindowContent>
                     <Routes>
+                        <Route path={Path.HOME} element={<Content />} />
                         <Route path={Path.USER} element={<User />} />
                     </Routes>
                 </WindowContent>

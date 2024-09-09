@@ -37,7 +37,7 @@ export function Footer(){
         <div className={styles['footer']}>
             {footerItems.map((item, index) => {
                 return (
-                    <div className={styles['footer-item']} onClick={() => {tabClick(item)}}>
+                    <div className={styles['footer-item']} onClick={() => {tabClick(item)}} key={index}>
                         <span className={styles['footer-item-icon']}>{item.unActiveIcon}</span>
                         <span className={styles['footer-item-text']}>{item.name}</span>
                     </div>

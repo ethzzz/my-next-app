@@ -3,7 +3,7 @@
     top: 0;
     width: 100%;
     text-align: center;
-    height:60px;
+    height:var(--window-header-height);
     background-color: #000000;
     .login-container{
         position: absolute;

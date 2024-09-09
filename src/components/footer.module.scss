@@ -7,6 +7,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: var(--window-footer-height);
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -16,7 +17,7 @@
     flex-direction: column;
     align-items: center;
     //margin: 0 10px;
-    height: 44px;
+    height: 100%;
     flex:1;
     background-color: white;
     a{
