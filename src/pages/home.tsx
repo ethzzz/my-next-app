@@ -34,6 +34,10 @@ function WindowContent({ children }: Readonly<{ children: React.ReactNode }>) {
     loading: () => <Loading noLogo />
 }) */
 
+const User = dynamic(async () => (await import("../components/user")).User, {
+    loading: () => <Loading noLogo />,
+});
+
 function Screen(){
 
     const renderContent = () =>{
@@ -42,7 +46,7 @@ function Screen(){
                 <Header />
                 <WindowContent>
                     <Routes>
-                        <Route path={Path.HOME} element={<div />}></Route>
+                        <Route path={Path.USER} element={<User />} />
                     </Routes>
                 </WindowContent>
                 <Footer />
