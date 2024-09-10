@@ -1,0 +1,23 @@
+{
+    "presets": ["next/babel"],
+    "plugins": [
+        [
+            "auto-import",
+            {
+                "declarations": [
+                    {
+                        "default": "React",
+                        "path": "react"
+                    },
+                    {
+                        "members": [
+                            "useRef",
+                            "useState"
+                        ],
+                        "path": "react"
+                    }
+                ]
+            }
+        ]
+    ]
+}

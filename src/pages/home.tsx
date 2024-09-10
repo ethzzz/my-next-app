@@ -6,6 +6,7 @@ import { Path } from '@/types/constant'
 import LoadingIcon from "../icons/three-dots.svg";
 import BotIcon from "../icons/bot.svg";
 import styles from './home.module.scss'
+import { useSystemStore } from "@/store/system"
 import { 
     HashRouter as Router,
     Routes,
@@ -23,8 +24,10 @@ export function Loading(props: { noLogo?: boolean }) {
 }
 
 function WindowContent({ children }: Readonly<{ children: React.ReactNode }>) {
+    const systemStore = useSystemStore()
+    const showHeader = systemStore.getSystem().showHeader
     return (
-        <div className={styles['window-content']}>
+        <div className={styles['window-content'] + `${showHeader ? '' : ` ${styles['no-header']}`}`}>
             {children}
         </div>
     )
@@ -38,6 +41,10 @@ const User = dynamic(async () => (await import("../components/user")).User, {
     loading: () => <Loading noLogo />,
 });
 
+const Category = dynamic(async() => (await import('./[category]')).Category, { 
+    loading: () => <Loading noLogo />
+})
+
 function Screen(){
 
     const renderContent = () =>{
@@ -48,6 +55,7 @@ function Screen(){
                     <Routes>
                         <Route path={Path.HOME} element={<Content />} />
                         <Route path={Path.USER} element={<User />} />
+                        <Route path={Path.CATEGORY} element={<Category />} />
                     </Routes>
                 </WindowContent>
                 <Footer />

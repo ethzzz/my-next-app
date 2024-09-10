@@ -2,6 +2,7 @@ import "@/styles/global.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AntdRegistry } from '@ant-design/nextjs-registry'
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AntdRegistry>
-          {children}
-        </AntdRegistry>
+        <React.StrictMode>
+          <AntdRegistry>
+            {children}
+          </AntdRegistry>
+        </React.StrictMode>
       </body>
     </html>
   );

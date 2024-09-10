@@ -5,4 +5,5 @@ export enum Path {
     PAGE = "/page",
     USER = "/user",
     USER_LAYOUT = "/user/layout",
+    CATEGORY = "/category/:category",
 }

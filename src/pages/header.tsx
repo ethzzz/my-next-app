@@ -14,7 +14,7 @@ import {
 
 export function Header() {
     const userStore = useUserStore()
-    const { getUserInfo } = userStore
+    const { getUserInfo,setUserInfo } = userStore
 
     const Login = () =>{
         const [showLoginModal,setShowLoginModal] = useState(false)
@@ -25,12 +25,9 @@ export function Header() {
         function LoginModal(){
             const formRef = useRef<FormInstance>(null)
             const handleLogin = ()=>{
-                formRef.current?.validateFields().then((values)=>{
-                    fetch('/api/system/login',{
-                        
-                    }).then(res=>{
-                        console.log(res)
-                    })
+                formRef.current?.validateFields().then(async(values)=>{
+                    const { username,password } = values
+                    await userStore.login(username,password)
                 })
             }
             return (

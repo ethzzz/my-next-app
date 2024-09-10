@@ -5,6 +5,7 @@ import {
     UserOutlined,
 } from "@ant-design/icons";
 import {useRouter} from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 const footerItems = [
     {
@@ -28,9 +29,9 @@ const footerItems = [
 ]
 
 export function Footer(){
-    const router = useRouter();
+    const navigate = useNavigate()
     const tabClick = (item:any) =>{
-        router.push(item.path)
+        navigate(item.path,{state: { fromHome: true}})
     }
 
     return (

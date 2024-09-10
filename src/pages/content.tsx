@@ -1,6 +1,8 @@
+import styles from './content.module.scss'
+
 export function Content() {
     return (
-        <div>
+        <div className={`${styles['content']}`}>
             content
         </div>
     )
