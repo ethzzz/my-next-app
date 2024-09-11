@@ -1,6 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { Header } from './header'
+import { Header } from '../components/header'
 import { Footer } from '@/components/footer'
 import { Path } from '@/types/constant'
 import LoadingIcon from "../icons/three-dots.svg";
@@ -33,7 +33,7 @@ function WindowContent({ children }: Readonly<{ children: React.ReactNode }>) {
     )
 }
 
-const Content = dynamic(async() => (await import('./content')).Content, { 
+const Content = dynamic(async() => (await import('../components/content')).Content, { 
     loading: () => <Loading noLogo />
 })
 
@@ -41,7 +41,7 @@ const User = dynamic(async () => (await import("../components/user")).User, {
     loading: () => <Loading noLogo />,
 });
 
-const Category = dynamic(async() => (await import('./[category]')).Category, { 
+const Category = dynamic(async() => (await import('../components/[category]')).Category, { 
     loading: () => <Loading noLogo />
 })
 

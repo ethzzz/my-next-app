@@ -17,6 +17,7 @@ const USER_STATE: User = {
 }
 
 type UserMethods = {
+    login: (username: string, password: string) => Promise<void>
     getUserInfo:() => User
     setUserInfo: (user: User) => void
     setToken: (token: string) => void
@@ -32,6 +33,15 @@ export const useUserStore = createPersistStore<
         return {
             getUserInfo: () => _get(),
             setUserInfo: (user) => set(user),
+            login: async (username, password) => {
+                fetch("/api/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ username, password })}
+                )
+            },
             setToken: (token) => set({ token }),
             getToken: () => _get().token
         }

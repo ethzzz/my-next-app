@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 
-const mode = process.env.BUILD_MODE ?? 'dev'    
+const mode = process.env.BUILD_MODE ?? 'standalone'    
 
 // 是否需要分包
 const disableChunk = !!process.env.DISABLE_CHUNK || mode === 'export'
