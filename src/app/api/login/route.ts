@@ -7,15 +7,17 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
     const pathname = request.nextUrl.pathname
     try{
-        const res = await fetch("http://localhost:3002/api/system/login",{
+        const res = await fetch("http://localhost:3002/system/login",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(request.body)
         })
-        console.log(res)
-        return NextResponse.json({})
+        const data = await res.json()
+        return NextResponse.json({
+            ...data
+        })
     }catch(err){
         return NextResponse.json({code:1,msg:err})
     }
