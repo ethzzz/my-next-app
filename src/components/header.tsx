@@ -9,12 +9,15 @@ import {
     Modal,
     Form,
     Input,
-    FormInstance
+    FormInstance,
+    message
 } from 'antd'
 
 export function Header() {
     const userStore = useUserStore()
-    const { getUserInfo,setUserInfo } = userStore
+    const { getUserInfo,setUserInfo,login } = userStore
+
+    const user = getUserInfo()
 
     const Login = () =>{
         const [showLoginModal,setShowLoginModal] = useState(false)
@@ -27,7 +30,16 @@ export function Header() {
             const handleLogin = ()=>{
                 formRef.current?.validateFields().then(async(values)=>{
                     const { username,password } = values
-                    await userStore.login(username,password)
+                    try{
+                        const res = await login(username,password)
+                        if(res.code === 0){
+                            return message.success('登录成功')
+                        }else{
+                            return message.error(res.msg)
+                        }
+                    }catch(err: any){
+                        return message.error(err)
+                    }
                 })
             }
             return (
@@ -63,9 +75,19 @@ export function Header() {
         )
     }
 
+    const User = () =>{
+        return (
+            <>
+                <div className={styles['user-info']}>
+                    <span className={styles['username']}>{user.username}</span>
+                </div>
+            </>
+        )
+    }
+
     return (
         <div className={styles['header-content']}>
-            {getUserInfo().isLogin ? null : <Login /> }
+            {getUserInfo().isLogin ? <User /> : <Login /> }
         </div>
     )
 }

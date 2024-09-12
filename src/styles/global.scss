@@ -65,17 +65,19 @@
   --window-content-width: calc(100% - var(--sidebar-width));
   --message-max-width: 80%;
   --full-height: 100%;
-  --window-header-height: 50px;
+  --window-header-height: 44px;
   --window-footer-height: 44px;
+  box-sizing: border-box;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   :root {
     --window-width: 100vw;
     --window-height: var(--full-height);
     --sidebar-width: 100vw;
     --window-content-width: var(--window-width);
     --message-max-width: 100%;
+    box-sizing: border-box;
   }
 
   .no-mobile {
