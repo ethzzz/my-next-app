@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <React.StrictMode>
+        {/*<React.StrictMode>*/}
           <AntdRegistry>
             {children}
           </AntdRegistry>
-        </React.StrictMode>
+        {/*</React.StrictMode>*/}
       </body>
     </html>
   );

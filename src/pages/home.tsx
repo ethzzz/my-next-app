@@ -45,6 +45,10 @@ const Category = dynamic(async() => (await import('../components/[category]')).C
     loading: () => <Loading noLogo />
 })
 
+const ServerRender = dynamic(async() => (await import('../components/server-render')).ServerRender, {
+    loading:() => <Loading noLogo />
+})
+
 function Screen(){
 
     const renderContent = () =>{
@@ -55,6 +59,7 @@ function Screen(){
                     <Routes>
                         <Route path={Path.HOME} element={<Content />} />
                         <Route path={Path.USER} element={<User />} />
+                        <Route path={Path.SERVER_RENDER } element={<ServerRender />} />
                         <Route path={Path.CATEGORY} element={<Category />} />
                     </Routes>
                 </WindowContent>

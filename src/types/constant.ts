@@ -5,4 +5,5 @@ export enum Path {
     USER = "/user",
     USER_LAYOUT = "/user/layout",
     CATEGORY = "/category/:category",
+    SERVER_RENDER = "/server-render",
 }
