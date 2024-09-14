@@ -1,0 +1,22 @@
+.function-item{
+  margin: 10px 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #282d37;
+  color: white;
+  font-size:14px;
+  .function-item__title{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1d222b;
+  }
+  .function-item__content {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .function-item__content:last-child{
+    margin-bottom: 0;
+  }
+}

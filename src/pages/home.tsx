@@ -1,6 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { Header } from '../components/header'
+import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Path } from '@/types/constant'
 import LoadingIcon from "../icons/three-dots.svg";
@@ -38,7 +38,7 @@ const Content = dynamic(async() => (await import('../components/content')).Conte
 })
 
 const User = dynamic(async () => (await import("../components/user")).User, {
-    loading: () => <Loading noLogo />,
+    loading: () => <Loading noLogo />
 });
 
 const Category = dynamic(async() => (await import('../components/[category]')).Category, { 

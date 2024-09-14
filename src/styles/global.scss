@@ -122,9 +122,11 @@ body {
 }
 
 ::-webkit-scrollbar {
-  --bar-width: 10px;
-  width: var(--bar-width);
-  height: var(--bar-width);
+  //--bar-width: 10px;
+  //width: var(--bar-width);
+  //height: var(--bar-width);
+  width: 0;
+  height: 0;
 }
 
 ::-webkit-scrollbar-track {

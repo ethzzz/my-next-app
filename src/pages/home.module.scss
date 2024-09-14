@@ -97,12 +97,13 @@
 
 .window-content {
   width: var(--window-content-width);
-  height: 100%;
+  //height: 100%;
   padding-top: var(--window-header-height);
   padding-bottom: var(--window-footer-height);
   display: flex;
   flex-direction: column;
   background: #151823;
+  overflow: scroll;
 }
 
 .no-header{

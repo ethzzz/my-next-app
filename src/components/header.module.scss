@@ -5,6 +5,7 @@
     text-align: center;
     height:var(--window-header-height);
     background-color: #000000;
+    z-index: 999;
     .login-container{
         position: absolute;
         right: 20px;
