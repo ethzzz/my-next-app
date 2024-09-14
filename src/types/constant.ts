@@ -1,5 +1,6 @@
 export enum Path {
-    HOME = "/",
+    INDEX = '/',
+    HOME = "/home",
     CONTENT = "/content",
     PAGE = "/page",
     USER = "/user",

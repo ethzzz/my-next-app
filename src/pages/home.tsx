@@ -57,6 +57,7 @@ function Screen(){
                 <Header />
                 <WindowContent>
                     <Routes>
+                        <Route path={'/'} element={<Content />} />
                         <Route path={Path.HOME} element={<Content />} />
                         <Route path={Path.USER} element={<User />} />
                         <Route path={Path.SERVER_RENDER } element={<ServerRender />} />
