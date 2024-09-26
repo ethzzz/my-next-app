@@ -20,6 +20,9 @@ importers:
       '@ant-design/pro-components':
         specifier: ^2.7.15
         version: 2.7.15(@types/lodash-es@4.17.12)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@ctrl/tinycolor':
+        specifier: ^4.1.0
+        version: 4.1.0
       '@svgr/webpack':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.5.4)
@@ -32,6 +35,9 @@ importers:
       babel-plugin-auto-import:
         specifier: ^1.1.0
         version: 1.1.0
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       html-to-image:
         specifier: ^1.11.11
         version: 1.11.11
@@ -942,6 +948,10 @@ packages:
   '@ctrl/tinycolor@3.6.1':
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
+
+  '@ctrl/tinycolor@4.1.0':
+    resolution: {integrity: sha512-WyOx8cJQ+FQus4Mm4uPIZA64gbk3Wxh0so5Lcii0aJifqwoVOlfFtorjLE0Hen4OYyHZMXDWqMmaQemBhgxFRQ==}
+    engines: {node: '>=14'}
 
   '@dnd-kit/accessibility@3.1.0':
     resolution: {integrity: sha512-ea7IkhKvlJUv9iSHJOnxinBcoOI3ppGnnL+VDJ75O45Nss6HtZd8IdN8touXPDtASfeI2T2LImb8VOZcL47wjQ==}
@@ -6475,6 +6485,8 @@ snapshots:
       - react
 
   '@ctrl/tinycolor@3.6.1': {}
+
+  '@ctrl/tinycolor@4.1.0': {}
 
   '@dnd-kit/accessibility@3.1.0(react@18.3.1)':
     dependencies:

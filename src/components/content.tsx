@@ -4,6 +4,7 @@ import { ForwardRef} from "@/components/Function/ForwardRef";
 import { UseMemo} from "@/components/Function/UseMemo";
 import { Closures} from "@/components/Function/Closures";
 import { SuspenseFunction } from "@/components/Function/Suspense";
+import { ColorPicker } from "@/components/Function/ColorPicker/ColorPicker";
 
 export function Content() {
     return (
@@ -13,6 +14,7 @@ export function Content() {
             <UseMemo />
             <Closures />
             <SuspenseFunction />
+            <ColorPicker />
         </div>
     )
 }
