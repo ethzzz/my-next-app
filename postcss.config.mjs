@@ -4,7 +4,7 @@ const config = {
     tailwindcss: {},
     "postcss-px-to-viewport": {
       unitToConvert: "px",
-      viewportWidth: 375,
+      viewportWidth: 750,
       unitPrecision: 5,
       propList: ["*"],
       viewportUnit: "vw",

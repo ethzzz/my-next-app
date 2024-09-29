@@ -1,42 +1,49 @@
 .header-content{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    height:var(--window-header-height);
-    background-color: #000000;
-    z-index: 999;
-    .login-container{
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        .button{
-            display: inline-block;
-            max-width: 150px;
-            width: 74px;
-            font-size: 16px;
-            border-radius: 6px;
-            background-color: #FFE147;
-            height: 30px;
-            line-height: 30px;
-            font-weight: bold;
-            color: #000000;
-            cursor: pointer;
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .header-content{
+        display: block;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        height:var(--window-header-height);
+        background-color: #000000;
+        z-index: 999;
+        .login-container{
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            .button{
+                display: inline-block;
+                max-width: 150px;
+                width: 74px;
+                font-size: 16px;
+                border-radius: 6px;
+                background-color: #FFE147;
+                height: 30px;
+                line-height: 30px;
+                font-weight: bold;
+                color: #000000;
+                cursor: pointer;
+            }
+            .login{
+                margin-right: 15px;
+            }
         }
-        .login{
-            margin-right: 15px;
-        }
-    }
-    .user-info{
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        .username{
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
+        .user-info{
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            .username{
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+            }
         }
     }
 }

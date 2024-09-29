@@ -13,7 +13,7 @@ export function ColorPicker(){
             颜色选择器
           </FunctionItemHeader>
           <FunctionItemContent>
-            <ColorPickerPanel />
+            <ColorPickerPanel value="rgb(0 0 0)"/>
           </FunctionItemContent>
         </FunctionItem>
       )
