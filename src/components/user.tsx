@@ -1,5 +1,6 @@
 import styles from './user.module.scss'
 import { useUserStore } from '@/store/user'
+import Image from 'next/image'
 
 export function User(){
     const { getUserInfo,logOut }  = useUserStore()
@@ -13,7 +14,7 @@ export function User(){
             <div className={styles['user-wrapper']}>
                 <div className={styles['user-info']}>
                     <div className={styles['user-avatar']}>
-                        <img src={user.avatar} alt="" />
+                        <Image src={user.avatar || ''} alt="" />
                     </div>
                     <div className={styles['user-name']}>{user.username}</div>
                 </div>

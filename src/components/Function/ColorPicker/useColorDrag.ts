@@ -41,7 +41,7 @@ function useColorDrag(
                 setOffsetValue(calcOffset)
             }
         }
-    }, [color]);
+    }, [color,calculate]);
 
     useEffect(() => {
       document.removeEventListener('mousemove',onDragMove);

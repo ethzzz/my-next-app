@@ -48,3 +48,4 @@ export const Icon = forwardRef<SVGSVGElement,PropsWithChildren<IconProps>>((prop
         </svg>
     )
 })
+Icon.displayName = 'Icon'; 

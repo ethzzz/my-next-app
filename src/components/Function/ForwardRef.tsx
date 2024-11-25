@@ -43,7 +43,7 @@ export function ForwardRef(){
                     setInputValue(val)
                 }
             }
-        },[ref])
+        },[])
         return <div>
             <Input ref={inputRef} value={inputValue} style={{width:'100%'}} onChange={e=>setInputValue(e.target.value)}></Input>
         </div>

@@ -6,9 +6,9 @@ export function Category(){
     const location = useLocation()
     const [count,setCount] = useState(0)
     useEffect(()=>{
-        setCount(count+1)
+        setCount((num)=>num+1)
         console.log(location)
-    },[])
+    },[location])
     return (
         <>
             {location.pathname}

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function handle(request: NextRequest) {
+async function handle(request: NextRequest) {
     if(request.method === "GET"){
         return NextResponse.json({})
     }

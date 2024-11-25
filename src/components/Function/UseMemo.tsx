@@ -37,6 +37,7 @@ const BComp = memo((props:any) =>{
         </div>
     )
 })
+BComp.displayName = "BComp"
 
 export function UseMemo(){
     const [,setNum] = useState(0)

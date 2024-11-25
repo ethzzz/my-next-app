@@ -24,6 +24,7 @@ const createFrontIconFont = (scriptUrl: string) => {
             </Icon>
         );
     });
+    Iconfont.displayName = 'Iconfont';
 
     return Iconfont;
 }

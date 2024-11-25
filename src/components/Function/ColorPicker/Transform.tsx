@@ -26,5 +26,6 @@ const Transform = forwardRef<HTMLDivElement, TransformProps>((props, ref) => {
         </div>
     )
 })
+Transform.displayName = 'Transform';
 
 export default Transform;
