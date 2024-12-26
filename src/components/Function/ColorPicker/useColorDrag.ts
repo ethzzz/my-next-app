@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, RefObject } from "react";
+import { useEffect, useRef, useState, RefObject, useCallback } from "react";
 import { TransformOffset } from "./Transform";
 import { Color } from "./color";
 
@@ -34,14 +34,20 @@ function useColorDrag(
     const [offsetValue, setOffsetValue] = useState<TransformOffset>(offset || { x: 0, y: 0 });
     const dragRef = useRef({flag:false})
 
+    // 将calculate缓存，避免每次都重新计算
+    const memoCalculate = useCallback(() => {
+        return calculate?.()
+    }, [])
+    
+
     useEffect(() => {
         if(!dragRef.current.flag){
-            const calcOffset = calculate?.()
+            const calcOffset = memoCalculate?.()
             if(calcOffset){
                 setOffsetValue(calcOffset)
             }
         }
-    }, [color,calculate]);
+    },[color,memoCalculate]);
 
     useEffect(() => {
       document.removeEventListener('mousemove',onDragMove);

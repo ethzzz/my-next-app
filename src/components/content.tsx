@@ -5,6 +5,7 @@ import { UseMemo} from "@/components/Function/UseMemo";
 import { Closures} from "@/components/Function/Closures";
 import { SuspenseFunction } from "@/components/Function/Suspense";
 import { ColorPicker } from "@/components/Function/ColorPicker/ColorPicker";
+import { ScreenRecording } from './Function/webRTC/ScreenRecording';
 
 export function Content() {
     return (
@@ -15,6 +16,7 @@ export function Content() {
             <Closures />
             <SuspenseFunction />
             <ColorPicker />
+            <ScreenRecording />
         </div>
     )
 }
