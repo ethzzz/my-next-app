@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Color } from './color';
 import Handler from './Handler';
 import Transform from './Transform';
@@ -9,6 +9,11 @@ import { calculateColor, calculateOffset } from "./utils";
 const Palette: FC<{ color: Color, onChange?: (color:Color) => void }> = ({ color, onChange }) => {
     const transformRef = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
 
     const [offset, dragStartHandle ] = useColorDrag({
         containerRef,
@@ -37,14 +42,16 @@ const Palette: FC<{ color: Color, onChange?: (color:Color) => void }> = ({ color
             <Transform ref={transformRef} offset={{x:offset.x, y: offset.y}}>
                 <Handler color={color.toRgbString()} />
             </Transform>
-            <div
-                className="color-picker-panel-palette-main"
-                style={{
-                    backgroundColor: `hsl(${color.toHsl().h},100%,50%`,
-                    backgroundImage: 'linear-gradient(0deg, #000, transparent),linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0))'
-                }}
-            >
-            </div>
+            {isClient && (
+                <div
+                    className="color-picker-panel-palette-main"
+                    style={{
+                        backgroundColor: `hsl(${color.toHsl().h},100%,50%`,
+                        backgroundImage: 'linear-gradient(0deg, #000, transparent),linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0))'
+                    }}
+                >
+                </div>
+            )}
         </div>
     )
 }
