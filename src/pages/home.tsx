@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Path } from '@/types/constant'
-import LoadingIcon from "../icons/three-dots.svg";
-import BotIcon from "../icons/bot.svg";
+// import LoadingIcon from "../icons/three-dots.svg";
+// import BotIcon from "../icons/bot.svg";
 import styles from './home.module.scss'
 import { useSystemStore } from "@/store/system"
 import { 
@@ -17,7 +17,7 @@ import {
 export function Loading(props: { noLogo?: boolean }) {
     return (
         <div className={styles["loading-content"] + " no-dark"}>
-            {!props.noLogo && <BotIcon />}
+            {!props.noLogo}
             {/* <LoadingIcon></LoadingIcon> */}
         </div>
     );
@@ -53,19 +53,9 @@ function Screen(){
 
     const renderContent = () =>{
         return (
-            <>
-                <Header />
-                <WindowContent>
-                    <Routes>
-                        <Route path={'/'} element={<Content />} />
-                        <Route path={Path.HOME} element={<Content />} />
-                        <Route path={Path.USER} element={<User />} />
-                        <Route path={Path.SERVER_RENDER } element={<ServerRender />} />
-                        <Route path={Path.CATEGORY} element={<Category />} />
-                    </Routes>
-                </WindowContent>
-                <Footer />
-            </>
+            <WindowContent>
+                <Content />
+            </WindowContent>
         )
     }
 
@@ -76,12 +66,10 @@ function Screen(){
     )
 }
 
-export function Home(){
+export default function Home(){
     return (
         <>  
-            <Router>
-                <Screen />
-            </Router>
+            <Screen />
         </>
     )
 }

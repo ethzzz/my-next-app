@@ -35,12 +35,14 @@ export function ScreenRecording() {
             }
         });
         recorder.addEventListener('stop', ()=>{
-            const blob = new Blob(chunks, { type: 'video/mp4' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'recording.webm';
-            a.click();
+            if(typeof window !== 'undefined'){
+                const blob = new Blob(chunks, { type: 'video/mp4' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'recording.webm';
+                a.click();
+            }
         });
         recorder.start();
     }

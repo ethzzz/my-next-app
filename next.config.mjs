@@ -28,7 +28,9 @@ const nextConfig = {
     },
     experimental:{
         forceSwcTransforms: true
-    }
+    },
+    // 生成静态文件
+    transpilePackages: ['@ant-design/icons',"antd","@babel"],
 };
 
 const CorsHeaders = [

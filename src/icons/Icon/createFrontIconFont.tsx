@@ -6,6 +6,7 @@ const loadedSet = new Set<string>()
 const createFrontIconFont = (scriptUrl: string) => {
     if(
         typeof scriptUrl === 'string'
+        && typeof window !== 'undefined'
         && scriptUrl.length
         && !loadedSet.has(scriptUrl)
     ){

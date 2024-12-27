@@ -1,4 +1,4 @@
-import { Home } from "~/home"
+import Home from "~/home"
 import { ErrorBoundary} from "react-error-boundary";
 
 export default function App() {
