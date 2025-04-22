@@ -12,7 +12,7 @@ const config = {
       selectorBlackList: [],
       minPixelValue: 1,
       replace: true,
-      mediaQuery: false,
+      mediaQuery: true,
       exclude: [],
     }
   },

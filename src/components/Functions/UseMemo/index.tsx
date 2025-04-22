@@ -80,3 +80,5 @@ export function UseMemo(){
         </FunctionItem>
     )
 }
+
+UseMemo.displayName = "UseMemo"

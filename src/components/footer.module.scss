@@ -13,6 +13,7 @@
     bottom: 0;
     width: 100%;
     height: var(--window-footer-height);
+    min-height: 44px;
     z-index: 9999;
     display: flex;
     justify-content: center;

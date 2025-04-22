@@ -27,3 +27,5 @@ export function ImmerFunction(){
         </FunctionItem>
     )
 }
+
+ImmerFunction.displayName = "ImmerFunction"

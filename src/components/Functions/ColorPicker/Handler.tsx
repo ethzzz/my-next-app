@@ -16,6 +16,7 @@ const Handler: FC<HandlerProps> = ({ size = 'default', color }) => {
             })}
             style={{
                 backgroundColor: color,
+                cursor: 'pointer',
             }}
         />
     );

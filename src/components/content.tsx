@@ -1,11 +1,9 @@
 import styles from './content.module.scss'
-import { ImmerFunction } from '@/components/Function/ImmerFunction'
-import { ForwardRef} from "@/components/Function/ForwardRef";
-import { UseMemo} from "@/components/Function/UseMemo";
-import { Closures} from "@/components/Function/Closures";
-import { SuspenseFunction } from "@/components/Function/Suspense";
-import { ColorPicker } from "@/components/Function/ColorPicker/ColorPicker";
-import { ScreenRecording } from './Function/webRTC/ScreenRecording';
+import { ImmerFunction } from '@/components/Functions/ImmerFunction'
+import { ForwardRef} from "@/components/Functions/ForwardRef";
+import { UseMemo} from "@/components/Functions/UseMemo";
+import { Closures} from "@/components/Functions/Closures";
+import { SuspenseFunction } from "@/components/Functions/SuspenseFunction";
 
 export function Content() {
     return (
@@ -15,8 +13,6 @@ export function Content() {
             <UseMemo />
             <Closures />
             <SuspenseFunction />
-            <ColorPicker />
-            <ScreenRecording />
         </div>
     )
 }

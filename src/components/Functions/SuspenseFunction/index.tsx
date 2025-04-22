@@ -34,3 +34,5 @@ export function SuspenseFunction(){
         </FunctionItem>
     )
 }
+
+SuspenseFunction.displayName = "SuspenseFunction"

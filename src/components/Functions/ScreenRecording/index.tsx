@@ -43,6 +43,7 @@ export function ScreenRecording() {
                 a.download = 'recording.webm';
                 a.click();
             }
+            setStream(null);
         });
         recorder.start();
     }
@@ -60,9 +61,11 @@ export function ScreenRecording() {
         <FunctionItem>
             <FunctionItemHeader>ScreenRecording</FunctionItemHeader>
             <FunctionItemContent>
-                <Button onClick={handleStartRecording}>开始录制</Button>
+                <Button style={{marginRight:'10px'}} onClick={handleStartRecording} disabled={!!stream}> { stream ? '正在录制中' : '开始录制' }</Button>
                 <Button onClick={handleEndRecording}>结束录制</Button>
             </FunctionItemContent>
         </FunctionItem>
     )
 }
+
+ScreenRecording.displayName = "ScreenRecording"

@@ -1,6 +1,6 @@
 import { createFromIconfontCN } from "@ant-design/icons";
 import { FunctionItem, FunctionItemHeader, FunctionItemContent } from "@/components/FunctionItem";
-import { ColorPickerPanel } from "@/components/Function/ColorPicker/ColorPickerPanel";
+import { ColorPickerPanel } from "@/components/Functions/ColorPicker/ColorPickerPanel";
 
 const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js", // 在 iconfont.cn 上生成
@@ -18,3 +18,5 @@ export function ColorPicker(){
         </FunctionItem>
       )
 }
+
+ColorPicker.displayName = "ColorPicker"

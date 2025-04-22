@@ -3,9 +3,11 @@ import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Path } from '@/types/constant'
+import { Tab } from '@/components/Tab'
 // import LoadingIcon from "../icons/three-dots.svg";
 // import BotIcon from "../icons/bot.svg";
 import styles from './home.module.scss'
+import * as FunctionComponents from "@/components/Functions";
 import { useSystemStore } from "@/store/system"
 import { 
     HashRouter as Router,
@@ -22,6 +24,14 @@ export function Loading(props: { noLogo?: boolean }) {
         </div>
     );
 }
+
+// Functions列表
+const functionList = Object.entries(FunctionComponents).map(([name, Component]) => {
+    return {
+        name: name,
+        component: <Component />
+    }
+})
 
 function WindowContent({ children }: Readonly<{ children: React.ReactNode }>) {
     const systemStore = useSystemStore()
@@ -49,11 +59,12 @@ const ServerRender = dynamic(async() => (await import('../components/server-rend
     loading:() => <Loading noLogo />
 })
 
-function Screen(){
+function Screen() {
 
     const renderContent = () =>{
         return (
             <WindowContent>
+                {/* <Tab items={functionList} /> */}
                 <Content />
             </WindowContent>
         )

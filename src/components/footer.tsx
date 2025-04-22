@@ -1,13 +1,20 @@
+'use client'
 import styles from "./footer.module.scss"
 import {
     HomeOutlined,
     BulbOutlined,
     UserOutlined,
 } from "@ant-design/icons";
-import {useRouter} from "next/navigation";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
-const footerItems = [
+interface FooterItem {
+    name: string;
+    path : string;
+    activeIcon: JSX.Element;
+    unActiveIcon: JSX.Element;
+}
+
+const footerItems : FooterItem[] = [
     {
         name: 'home',
         path: 'home',
@@ -29,9 +36,9 @@ const footerItems = [
 ]
 
 export function Footer(){
-    const navigate = useNavigate()
-    const tabClick = (item:any) =>{
-        navigate(item.path,{state: { fromHome: true}})
+    const router = useRouter()
+    const tabClick = (item: FooterItem) =>{
+        router.push(`/${item.path}`)
     }
 
     return (
