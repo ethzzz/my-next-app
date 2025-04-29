@@ -1,42 +1,59 @@
 import { NextRequest, NextResponse } from "next/server";
-export async function GET(request: NextRequest) {
-    console.log(request)
-    return NextResponse.json({})
-}
+import jwt from "jsonwebtoken";
+import { LoginRequestBody, UserInfo } from "@/types/system";
 
-const userList = [
+const SECRET_KEY = "ethan";
+const TOKEN_EXPIRATION = "1d";
+
+const userList: UserInfo[] = [
     {
         id: 1,
         username: 'admin',
         password: '123456',
         avatar: 'https://timg.foguetebet.com/avatar/1.jpg',
-        token: 'qsadaeqwrwqr'
     },
     {
         id: 2,
         username: 'user',
         password: '123456',
         avatar: '',
-        token: 'asfdasfsfewqf'
     }
 ]
 
+// generate JWT Token
+function generateToken(payload: object) {
+    return jwt.sign(payload, SECRET_KEY, { expiresIn: TOKEN_EXPIRATION });
+}
+
+// verify JWT Token
+function verifyToken(token: string) {
+    try {
+        return jwt.verify(token, SECRET_KEY);
+    } catch (err) {
+        return null;
+    }
+}
+
+// 验证token是否有效
+export async function GET(request: NextRequest) {
+    const token = request.headers.get("Authorization")?.split(" ")[1];
+    if (!token) {
+        return NextResponse.json({ code: 1, msg: "未登录" });
+    }
+    const decoded = verifyToken(token);
+    if (!decoded) {
+        return NextResponse.json({ code: 1, msg: "token无效" });
+    }
+    return NextResponse.json({ code: 0, msg: "token有效", data: decoded });
+}
+
+// login function
 export async function POST(request: NextRequest) {
     // const pathname = request.nextUrl.pathname
     try{
-        // const res = await fetch("http://localhost:3002/system/login",{
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(request.body)
-        // })
-        // const data = await res.json()
-        // return NextResponse.json({
-        //     ...data
-        // })
-        const body = await request.json()
-        if(!body.username || !body.password){
+        const body: LoginRequestBody = await request.json()
+        const { username, password } = body;
+        if(!username || !password){
             return NextResponse.json({code:1,msg:"用户名或密码不能为空"})
         }
         const user = userList.find(item => item.username === body.username)
