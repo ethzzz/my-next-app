@@ -1,6 +1,7 @@
+'use client'
 import { createFromIconfontCN } from "@ant-design/icons";
 import { FunctionItem, FunctionItemHeader, FunctionItemContent } from "@/components/FunctionItem";
-import { ColorPickerPanel } from "@/components/Functions/ColorPicker/ColorPickerPanel";
+import { ColorPickerPanel } from "@/app/functions/ColorPicker/ColorPickerPanel";
 
 const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js", // 在 iconfont.cn 上生成

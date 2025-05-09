@@ -1,0 +1,55 @@
+.sidebar {
+  top: 0;
+  width: var(--sidebar-width);
+  box-sizing: border-box;
+  background-color: #151823;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset -2px 0px 8px 0px rgba(0, 0, 0, 0.18);
+  position: relative;
+  transition: width ease 0.05s;
+
+  .sidebar-header-bar {
+    display: flex;
+    margin-bottom: 20px;
+
+    .sidebar-bar-button {
+      flex-grow: 1;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &:hover,
+  &:active {
+    .sidebar-drag {
+      background-color: rgba($color: #000000, $alpha: 0.01);
+
+      svg {
+        opacity: 0.2;
+      }
+    }
+  }
+}
+
+.sidebar-drag {
+  $width: 14px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: $width;
+  background-color: rgba($color: #000000, $alpha: 0);
+  cursor: ew-resize;
+  transition: all ease 0.3s;
+  display: flex;
+  align-items: center;
+
+  svg {
+    opacity: 0;
+    margin-left: -2px;
+  }
+}

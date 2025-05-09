@@ -1,3 +1,4 @@
+'use client'
 import { FunctionItem, FunctionItemHeader, FunctionItemContent} from "@/components/FunctionItem";
 import {createStore} from "zustand";
 

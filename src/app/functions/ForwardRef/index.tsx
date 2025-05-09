@@ -1,3 +1,4 @@
+'use client'
 import { FunctionItem, FunctionItemHeader, FunctionItemContent } from "@/components/FunctionItem";
 import React, {useRef, forwardRef, useEffect, useImperativeHandle, useState} from "react";
 import {Input,Button, InputRef} from "antd";

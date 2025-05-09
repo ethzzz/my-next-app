@@ -1,9 +1,9 @@
 import styles from './content.module.scss'
-import { ImmerFunction } from '@/components/Functions/ImmerFunction'
-import { ForwardRef} from "@/components/Functions/ForwardRef";
-import { UseMemo} from "@/components/Functions/UseMemo";
-import { Closures} from "@/components/Functions/Closures";
-import { SuspenseFunction } from "@/components/Functions/SuspenseFunction";
+import { ImmerFunction } from '@/app/functions/ImmerFunction'
+import { ForwardRef} from "@/app/functions/ForwardRef";
+import { UseMemo} from "@/app/functions/UseMemo";
+import { Closures} from "@/app/functions/Closures";
+import { SuspenseFunction } from "@/app/functions/SuspenseFunction";
 
 export function Content() {
     return (

@@ -1,3 +1,4 @@
+'use client'
 import { memo, useMemo, useEffect, useState, useCallback, CSSProperties } from "react";
 import { FunctionItem, FunctionItemHeader, FunctionItemContent} from "@/components/FunctionItem";
 import { Button } from "antd"

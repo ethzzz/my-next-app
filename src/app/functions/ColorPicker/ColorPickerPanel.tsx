@@ -1,3 +1,4 @@
+'use client'
 import { useState, CSSProperties } from "react";
 import cs from 'classnames';
 import './index.scss'

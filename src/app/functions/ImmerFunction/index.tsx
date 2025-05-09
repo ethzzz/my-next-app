@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import { produce } from 'immer';
 import { Button } from "antd";

@@ -1,0 +1,58 @@
+/* 自定义 Menu 样式 */
+.custom-menu.ant-menu {
+    background: transparent;
+    border: none;
+}
+
+.custom-menu .ant-menu-item {
+    padding: 6px 10px !important;
+    padding-left: 16px !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    // background-color: #282d37 !important;
+    color: #e0e6f3 !important;
+    border-radius: 4px !important;
+    transition: all 0.3s !important;
+}
+
+.custom-menu .ant-menu-item:hover {
+    background-color: #32384a !important;
+    color: #fff !important;
+}
+
+.custom-menu .ant-menu-item-selected {
+    background-color: #353b4d !important;
+    color: var(--primary) !important;
+}
+
+/* 去除默认的选中条 */
+.custom-menu .ant-menu-item::after {
+    display: none !important;
+}
+
+/* 调整图标样式（如果有） */
+.custom-menu .ant-menu-item .anticon {
+    color: inherit;
+}
+
+/* 调整子菜单样式（如果有） */
+.custom-menu .ant-menu-sub {
+    background: transparent !important;
+}
+
+.custom-menu .ant-menu-submenu-title {
+    color: #e0e6f3 !important;
+}
+
+.custom-menu .ant-menu-submenu-title:hover {
+    color: #fff !important;
+}
+
+/* 调整展开图标 */
+.custom-menu .ant-menu-submenu-arrow {
+    color: #e0e6f3 !important;
+}
+
+.custom-menu .ant-menu-submenu-open > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+    color: var(--primary) !important;
+}

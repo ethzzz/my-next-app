@@ -1,3 +1,4 @@
+'use client'
 import type { FC } from 'react';
 import { useRef, useEffect, useState } from 'react';
 import { Color } from './color';

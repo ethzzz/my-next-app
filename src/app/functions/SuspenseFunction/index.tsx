@@ -1,3 +1,4 @@
+'use client'
 import {FunctionItem, FunctionItemContent, FunctionItemHeader} from "@/components/FunctionItem";
 import {useState, Suspense, useEffect} from "react";
 
