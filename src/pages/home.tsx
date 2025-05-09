@@ -1,6 +1,7 @@
 'use client'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
+import { Sidebar } from '@/components/Siderbar'
 import { Footer } from '@/components/footer'
 import { Path } from '@/types/constant'
 import { Tab } from '@/components/Tab'
@@ -14,6 +15,7 @@ import {
     Routes,
     Route
 } from 'react-router-dom'
+import { useState } from 'react'
 
 // 组件加载loading
 export function Loading(props: { noLogo?: boolean }) {
@@ -61,18 +63,23 @@ const ServerRender = dynamic(async() => (await import('../components/server-rend
 
 function Screen() {
 
-    const renderContent = () =>{
-        return (
-            <WindowContent>
-                {/* <Tab items={functionList} /> */}
-                <Content />
-            </WindowContent>
-        )
-    }
+    const [selected, setSelected] = useState(functionList[0].name)
+
+    // const renderContent = () =>{
+    //     return (
+    //         <WindowContent>
+    //             {/* <Tab items={functionList} /> */}
+    //             <Content />
+    //         </WindowContent>
+    //     )
+    // }
 
     return (
         <div className={styles['container'] + " no-dark"}>
-            {renderContent()}
+            <Sidebar items={functionList} selected={selected} onSelect={setSelected} />
+            <div className={styles['window-content']}>
+                {functionList.find(fn => fn.name === selected)?.component}
+            </div>
         </div>
     )
 }

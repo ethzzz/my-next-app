@@ -23,9 +23,9 @@ export default function RootLayout({
       <body>
         {/*<React.StrictMode>*/}
           <AntdRegistry>
-            <Header />
+            {/* <Header /> */}
               {children}
-            <Footer />
+            {/* <Footer /> */}
           </AntdRegistry>
         {/*</React.StrictMode>*/}
       </body>

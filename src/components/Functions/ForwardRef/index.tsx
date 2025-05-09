@@ -6,8 +6,6 @@ export function ForwardRef(){
     const Father = () =>{
         const inputRef = useRef<RefProps>(null);
         useEffect(()=>{
-            console.log(inputRef.current?.focus())
-            console.log(inputRef.current?.getValue())
         },[])
         const setValue = () => {
             if (inputRef.current){
