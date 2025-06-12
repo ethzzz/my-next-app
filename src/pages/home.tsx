@@ -1,14 +1,15 @@
 'use client'
-import dynamic from 'next/dynamic'
-import { Header } from '@/components/header'
 import { Sidebar } from '@/components/Sidebar/Sidebar'
-import { Footer } from '@/components/footer'
-import { Path } from '@/types/constant'
-import { Tab } from '@/components/Tab'
-// import LoadingIcon from "../icons/three-dots.svg";
-// import BotIcon from "../icons/bot.svg";
 import styles from './home.module.scss'
 import { useSystemStore } from "@/store/system"
+import * as FunctionComponents from '@/components/functions'
+
+import {
+    HashRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+} from "react-router-dom";
 
 // 组件加载loading
 export function Loading(props: { noLogo?: boolean }) {
@@ -35,7 +36,15 @@ function Screen() {
         <div className={styles['container'] + " no-dark"}>
             <Sidebar />
             <div className={styles['window-content']}>
-                
+                <Routes>
+                    {Object.entries(FunctionComponents).map(([name, Component]) => (
+                        <Route 
+                            key={`/functions/${name}`}
+                            path={`/functions/${name}`}
+                            element={<Component />}
+                        />
+                    ))}
+                </Routes>
             </div>
         </div>
     )
@@ -44,7 +53,9 @@ function Screen() {
 export default function Home(){
     return (
         <>  
-            <Screen />
+            <Router>
+                <Screen />
+            </Router>
         </>
     )
 }

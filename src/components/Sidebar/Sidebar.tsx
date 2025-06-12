@@ -7,21 +7,42 @@ import './Sidebar.scss'
 import { useAppDispatch, useAppSelector } from '@/store/redux/hooks'
 import { setSelectedItem, setExpandedItems } from '@/store/redux/slices/sidebarSlice'
 import { useRouter } from 'next/navigation'
+import { useNavigate } from 'react-router-dom'
 
-interface SidebarProps {
-    items: { name: string }[]
+// 检查路径是否存在于 Next.js 路由中
+const checkNextRoute = async (path: string): Promise<boolean> => {
+    try {
+        // 移除开头的斜杠
+        const routePath = path.startsWith('/') ? path.slice(1) : path
+        // 尝试动态导入对应的页面组件
+        await import(`@/app/${routePath}/page`)
+        return true
+    } catch (error) {
+        return false
+    }
 }
 
 export function Sidebar() {
     const dispatch = useAppDispatch()
     const router = useRouter()
+    const navigate = useNavigate()
     const selectedItem = useAppSelector((state) => state.sidebar.selectedItem)
     const expandedItems = useAppSelector((state) => state.sidebar.expandedItems)
     const menuItems = useAppSelector((state) => state.sidebar.menuItems)
 
-    const onSelect: MenuProps['onSelect'] = ({ key }) => {
+    const onSelect: MenuProps['onSelect'] = async ({ key }) => {
         dispatch(setSelectedItem(key))
-        router.push(key)
+        
+        // 检查是否存在 Next.js 路由
+        const hasNextRoute = await checkNextRoute(key)
+        
+        if (hasNextRoute) {
+            // 如果存在 Next.js 路由，使用 Next.js 导航
+            router.push(key)
+        } else {
+            // 如果不存在，使用 React Router 导航
+            navigate(key)
+        }
     }
 
     const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {

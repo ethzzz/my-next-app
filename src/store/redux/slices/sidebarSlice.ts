@@ -1,12 +1,11 @@
 'use client'
 // src/store/slices/sidebarSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import * as FunctionComponents from '@/app/functions';
+import * as FunctionComponents from '@/components/functions';
 
 interface MenuItem {
-    key : string
-    label : string
-    component? : any
+    key: string
+    label: string
     path: string
     children?: MenuItem[]
 }
@@ -17,11 +16,10 @@ interface SidebarState {
   menuItems: MenuItem[]
 }
 
-const FunctionMenuItems = Object.entries(FunctionComponents).map(([name, Component]) => ({
+const FunctionMenuItems = Object.entries(FunctionComponents).map(([name]) => ({
     key: `/functions/${name}`,
     label: name,
     path: `/functions/${name}`,
-    component: Component,
 }))
 
 // 初始化菜单数据
