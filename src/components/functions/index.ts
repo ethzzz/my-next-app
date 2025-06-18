@@ -6,3 +6,4 @@ export { ImmerFunction } from './ImmerFunction';
 export { ScreenRecording } from './ScreenRecording';
 export { SuspenseFunction } from './SuspenseFunction';
 export { UseMemo } from './UseMemo';
+export { Token } from './Token';

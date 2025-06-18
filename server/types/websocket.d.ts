@@ -1,0 +1,12 @@
+export type WebSocketMessageType =
+    | 'getToken'
+    | 'verifyToken'
+    | 'deleteToken'
+    | 'token'
+    | 'error'
+    | 'close'
+    | 'open'
+    | 'message'
+    | 'connect'
+    | 'disconnect'
+    | 'pong'
