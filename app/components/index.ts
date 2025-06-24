@@ -1,4 +1,4 @@
-import { AIChat } from './ai-chat'
+import { AIChat } from './pages/ai-chat'
 import * as FunctionComponents from './functions'
 
 const allComponents = {

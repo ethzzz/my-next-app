@@ -15,7 +15,7 @@ const checkNextRoute = async (path: string): Promise<boolean> => {
         // 移除开头的斜杠
         const routePath = path.startsWith('/') ? path.slice(1) : path
         // 尝试动态导入对应的页面组件
-        await import(`@/app/${routePath}/page`)
+        await import(`/app/${routePath}/page`)
         return true
     } catch (error) {
         return false

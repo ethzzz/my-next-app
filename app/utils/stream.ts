@@ -71,9 +71,10 @@ export function fetch(url: string, options?: RequestInit): Promise<Response> {
       "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
       "User-Agent": navigator.userAgent,
     };
-    for (const item of new Headers(_headers || {})) {
-      headers[item[0]] = item[1];
-    }
+    // 修复 Headers 迭代兼容性问题，改用 forEach
+    new Headers(_headers || {}).forEach((value, key) => {
+      headers[key] = value;
+    });
     return window.__TAURI__
       .invoke("stream_fetch", {
         method: method.toUpperCase(),
