@@ -13,6 +13,7 @@ interface MenuItem {
 }
 
 interface SidebarState {
+  initSelectedItem?: string
   selectedItem: string
   expandedItems: string[]
   menuItems: MenuItem[]
@@ -49,9 +50,10 @@ export const initialMenuItems: MenuItem[] = [
 ]
 
 const initialState: SidebarState = {
+  initSelectedItem: '/pages/ai-chat',
   selectedItem: '',
   expandedItems: initialMenuItems.map(item => item.key),
-  menuItems: initialMenuItems
+  menuItems: initialMenuItems,
 }
 
 export const sidebarSlice = createSlice({

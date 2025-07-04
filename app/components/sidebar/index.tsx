@@ -46,9 +46,7 @@ export function Sidebar() {
     }
 
     useEffect(() => {
-        if (menuItems.length > 0 && menuItems[0].children && menuItems[0].children.length > 0) {
-            onSelect({ key: menuItems[0].children[0].key } as any)
-        }
+        navigate('/pages/ai-chat')
     }, [menuItems])
 
     const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {
