@@ -1,10 +1,8 @@
-import "@/styles/global.scss";
+import "@/app/styles/global.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import React from "react";
-import { Header } from "./components/header";
-import { Footer } from "./components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -2,6 +2,7 @@
 // src/store/slices/sidebarSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import * as FunctionComponents from '../../../components/functions';
+import allComponents from '@/app/components';
 
 interface MenuItem {
     key: string
@@ -25,7 +26,7 @@ const FunctionMenuItems = Object.entries(FunctionComponents).map(([name, Compone
 }))
 
 // 初始化菜单数据
-const initialMenuItems: MenuItem[] = [
+export const initialMenuItems: MenuItem[] = [
     {
         key: 'functions',
         label: '功能组件',
@@ -41,6 +42,7 @@ const initialMenuItems: MenuItem[] = [
                 key: '/pages/ai-chat',
                 label: 'AI聊天',
                 path: '/pages/ai-chat',
+                component: allComponents.AIChat
             }
         ]
     }

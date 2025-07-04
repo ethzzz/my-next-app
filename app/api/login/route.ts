@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import { LoginRequestBody, UserInfo } from "../../../types/system";
+import { LoginRequestBody, UserInfo } from "../../types/system";
 
 const SECRET_KEY = "ethan";
 const TOKEN_EXPIRATION = "1d";

@@ -11,6 +11,7 @@ class NAxios {
             baseURL: '/api',
             timeout: 10000
         })
+        return this.instance
     }
 
     // 请求拦截
@@ -54,4 +55,5 @@ class NAxios {
     }
 }
 
-export default new NAxios().getInstance()
+export const nAxiosInstance = new NAxios();
+export const http = nAxiosInstance.getInstance();

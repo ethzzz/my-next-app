@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:next": "next dev -p 4001",
-    "dev:all": "concurrently \"next dev\" \"ts-node-dev --respawn --transpile-only server/index.ts\"",
+    "next:dev": "next dev -p 4001",
+    "all:dev": "concurrently \"next dev\" \"ts-node-dev --respawn --transpile-only server/index.ts\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

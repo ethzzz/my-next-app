@@ -1,5 +1,3 @@
-import { LLMModel } from "../client/api";
-import { DalleQuality, DalleStyle, ModelSize } from "../typing";
 import { getClientConfig } from "../config/client";
 import {
   DEFAULT_INPUT_TEMPLATE,
@@ -61,7 +59,6 @@ export const DEFAULT_CONFIG = {
   hideBuiltinMasks: false, // dont add builtin masks
 
   customModels: "",
-  models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
     model: "gpt-4o-mini" as ModelType,
@@ -78,9 +75,6 @@ export const DEFAULT_CONFIG = {
     compressProviderName: "",
     enableInjectSystemPrompts: true,
     template: config?.template ?? DEFAULT_INPUT_TEMPLATE,
-    size: "1024x1024" as ModelSize,
-    quality: "standard" as DalleQuality,
-    style: "vivid" as DalleStyle,
   },
 
   ttsConfig: {
@@ -168,48 +162,11 @@ export const useAppConfig = createPersistStore(
       set(() => ({ ...DEFAULT_CONFIG }));
     },
 
-    mergeModels(newModels: LLMModel[]) {
-      if (!newModels || newModels.length === 0) {
-        return;
-      }
-
-      const oldModels = get().models;
-      const modelMap: Record<string, LLMModel> = {};
-
-      for (const model of oldModels) {
-        model.available = false;
-        modelMap[`${model.name}@${model?.provider?.id}`] = model;
-      }
-
-      for (const model of newModels) {
-        model.available = true;
-        modelMap[`${model.name}@${model?.provider?.id}`] = model;
-      }
-
-      set(() => ({
-        models: Object.values(modelMap),
-      }));
-    },
-
     allModels() {},
   }),
   {
     name: StoreKey.Config,
     version: 4.1,
-
-    merge(persistedState, currentState) {
-      const state = persistedState as ChatConfig | undefined;
-      if (!state) return { ...currentState };
-      const models = currentState.models.slice();
-      state.models.forEach((pModel) => {
-        const idx = models.findIndex(
-          (v) => v.name === pModel.name && v.provider === pModel.provider,
-        );
-        if (idx !== -1) models[idx] = pModel;
-        else models.push(pModel);
-      });
-      return { ...currentState, ...state, models: models };
-    },
 
     migrate(persistedState, version) {
       const state = persistedState as ChatConfig;
