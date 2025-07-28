@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Input, Button, Select, Upload, message, Space, Typography, Modal, Spin } from 'antd';
 import { UploadOutlined, SendOutlined, CloseOutlined } from '@ant-design/icons';
 import styles from './ai-chat.module.scss';
@@ -36,6 +36,15 @@ export function AIChat() {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewIndex, setPreviewIndex] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [modelList, setModelList] = useState(MODELS);
+
+  useEffect(() => {
+    fetch('/api/ai-chat')
+      .then(res => res.json())
+      .then(data => {
+        if (data.models) setModelList(data.models);
+      });
+  }, []);
 
   // 发送消息
   const sendMessage = async () => {
@@ -46,14 +55,33 @@ export function AIChat() {
     setInput('');
     setPastedImages([]);
     setLoading(true);
-    // 模拟AI回复
-    setTimeout(() => {
+    try {
+      // 只发送文本内容给AI，图片暂不处理
+      const res = await fetch('/api/ai-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input, model }),
+      });
+      const data = await res.json();
+      if (data.reply) {
+        setMessages((msgs) => [
+          ...msgs,
+          { role: 'ai', name: model, content: data.reply, image: undefined },
+        ]);
+      } else {
+        setMessages((msgs) => [
+          ...msgs,
+          { role: 'ai', name: model, content: data.error || 'AI无回复', image: undefined },
+        ]);
+      }
+    } catch (e: any) {
       setMessages((msgs) => [
         ...msgs,
-        { role: 'ai', name: model, content: `AI已收到${pastedImages.length > 0 ? '图片和' : ''}消息：${input}`, image: undefined },
+        { role: 'ai', name: model, content: 'AI服务异常', image: undefined },
       ]);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   // 粘贴图片
@@ -173,8 +201,8 @@ export function AIChat() {
           <Select
             value={model}
             onChange={setModel}
-            options={MODELS}
-            style={{ width: 160 }}
+            options={modelList.map(m => ({ label: m.label, value: m.value }))}
+            style={{ width: 120, marginRight: 8 }}
           />
           <TextArea
             value={input}
