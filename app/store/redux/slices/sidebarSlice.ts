@@ -38,6 +38,12 @@ export const initialMenuItems: MenuItem[] = [
                 label: 'AI聊天',
                 path: '/pages/ai-chat',
                 name: 'AIChat'
+            },
+            {
+                key: '/pages/file-upload',
+                label: '文件上传',
+                path: '/pages/file-upload',
+                name: 'FileUpload'
             }
         ]
     }
@@ -55,6 +61,7 @@ export const sidebarSlice = createSlice({
   initialState,
   reducers: {
     setSelectedItem: (state, action: PayloadAction<string>) => {
+      localStorage.setItem('selectedItem', action.payload)
       state.selectedItem = action.payload
     },
     setExpandedItems: (state, action: PayloadAction<string[]>) => {

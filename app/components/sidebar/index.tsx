@@ -9,19 +9,6 @@ import { setSelectedItem, setExpandedItems } from '../../store/redux/slices/side
 import { useRouter } from 'next/navigation'
 import { useNavigate } from 'react-router-dom'
 
-// 检查路径是否存在于 Next.js 路由中
-const checkNextRoute = async (path: string): Promise<boolean> => {
-    try {
-        // 移除开头的斜杠
-        const routePath = path.startsWith('/') ? path.slice(1) : path
-        // 尝试动态导入对应的页面组件
-        await import(`/app/${routePath}/page`)
-        return true
-    } catch (error) {
-        return false
-    }
-}
-
 export function Sidebar() {
     const dispatch = useAppDispatch()
     const router = useRouter()
@@ -30,12 +17,23 @@ export function Sidebar() {
     const expandedItems = useAppSelector((state) => state.sidebar.expandedItems)
     const menuItems = useAppSelector((state) => state.sidebar.menuItems)
 
-    const onSelect: MenuProps['onSelect'] = async ({ key }) => {
-        dispatch(setSelectedItem(key))
-        
+    // 检查路径是否存在于 Next.js 路由中
+    const checkNextRoute = async (path: string): Promise<boolean> => {
+        try {
+            // 移除开头的斜杠
+            const routePath = path.startsWith('/') ? path.slice(1) : path
+            // 尝试动态导入对应的页面组件
+            await import(`/app/${routePath}/page`)
+            return true
+        } catch (error) {
+            return false
+        }
+    }
+
+    const goPage = async (key: string) => {
         // 检查是否存在 Next.js 路由
         const hasNextRoute = await checkNextRoute(key)
-        
+            
         if (hasNextRoute) {
             // 如果存在 Next.js 路由，使用 Next.js 导航
             router.push(key)
@@ -45,13 +43,16 @@ export function Sidebar() {
         }
     }
 
+    const onSelect: MenuProps['onSelect'] = async ({ key }) => {
+        dispatch(setSelectedItem(key))
+        await goPage(key);
+    }
+
     // 初始化时设置默认选中的菜单项
     useEffect(() => {
-        if (!selectedItem && menuItems.length > 0) {
-            // 如果没有选中的项目，设置默认选中项
-            const defaultItem = '/pages/ai-chat'
-            dispatch(setSelectedItem(defaultItem))
-        }
+        const defaultSelect = localStorage.getItem('selectedItem') || selectedItem
+        dispatch(setSelectedItem(defaultSelect))
+        goPage(defaultSelect)
     }, [selectedItem, menuItems, dispatch])
 
     const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {

@@ -1,0 +1,204 @@
+.fileUploadContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--white);
+  padding: 24px;
+  gap: 16px;
+}
+
+.searchFormArea {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  :global(.ant-form-item) {
+    margin-bottom: 0;
+  }
+  
+  :global(.ant-form-item-label) {
+    font-weight: 500;
+  }
+}
+
+.fileListArea {
+  flex: 1;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+  :global(.ant-table-thead > tr > th) {
+    background: #fafafa;
+    font-weight: 600;
+  }
+  
+  :global(.ant-table-tbody > tr:hover > td) {
+    background: #f5f5f5;
+  }
+}
+
+.uploadArea {
+  padding: 16px 0;
+}
+
+.uploadMethodSelect {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropZone {
+  border: 2px dashed #d9d9d9;
+  border-radius: 8px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+  
+  &:hover {
+    border-color: #1890ff;
+    background: #f0f8ff;
+  }
+  
+  &.dragOver {
+    border-color: #1890ff;
+    background: #e6f7ff;
+    transform: scale(1.02);
+  }
+}
+
+.dropZoneContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.uploadIcon {
+  font-size: 48px;
+  color: #1890ff;
+  margin-bottom: 8px;
+}
+
+.fileList {
+  margin-top: 24px;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #fafafa;
+  
+  &:hover {
+    background: #f5f5f5;
+  }
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  
+  :global(.anticon) {
+    color: #1890ff;
+  }
+}
+
+.fileProgress {
+  flex: 1;
+  margin: 0 16px;
+  
+  :global(.ant-progress) {
+    margin: 0;
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .fileUploadContainer {
+    padding: 16px;
+  }
+  
+  .searchFormArea {
+    :global(.ant-form-item) {
+      margin-bottom: 12px;
+    }
+  }
+  
+  .fileItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .fileProgress {
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+
+// 状态颜色
+.statusSuccess {
+  color: #52c41a;
+}
+
+.statusError {
+  color: #ff4d4f;
+}
+
+.statusWarning {
+  color: #faad14;
+}
+
+.statusProcessing {
+  color: #1890ff;
+}
+
+// 动画效果
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fileItem {
+  animation: fadeIn 0.3s ease;
+}
+
+// 自定义滚动条
+.fileListArea {
+  :global(.ant-table-body) {
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+      
+      &:hover {
+        background: #a8a8a8;
+      }
+    }
+  }
+} 
