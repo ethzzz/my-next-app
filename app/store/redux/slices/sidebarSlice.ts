@@ -2,15 +2,7 @@
 // src/store/slices/sidebarSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import * as FunctionComponents from '../../../components/functions';
-import allComponents from '@/app/components';
-
-interface MenuItem {
-    key: string
-    label: string
-    path: string
-    component?: React.ComponentType<any>
-    children?: MenuItem[]
-}
+import { MenuItem } from '@/app/types/menu';
 
 interface SidebarState {
   initSelectedItem?: string
@@ -23,7 +15,7 @@ const FunctionMenuItems = Object.entries(FunctionComponents).map(([name, Compone
     key: `/functions/${name}`,
     label: name,
     path: `/functions/${name}`,
-    component: Component
+    name: Component.displayName
 }))
 
 // 初始化菜单数据
@@ -31,11 +23,13 @@ export const initialMenuItems: MenuItem[] = [
     {
         key: 'functions',
         label: '功能组件',
+        name: 'functions',
         path: '/functions',
         children: FunctionMenuItems
     },
     {
         key: 'pages',
+        name: 'pages',
         label: '页面功能',
         path: '/pages',
         children: [
@@ -43,7 +37,7 @@ export const initialMenuItems: MenuItem[] = [
                 key: '/pages/ai-chat',
                 label: 'AI聊天',
                 path: '/pages/ai-chat',
-                component: allComponents.AIChat
+                name: 'AIChat'
             }
         ]
     }
@@ -51,7 +45,7 @@ export const initialMenuItems: MenuItem[] = [
 
 const initialState: SidebarState = {
   initSelectedItem: '/pages/ai-chat',
-  selectedItem: '',
+  selectedItem: '', // 设置默认选中项
   expandedItems: initialMenuItems.map(item => item.key),
   menuItems: initialMenuItems,
 }

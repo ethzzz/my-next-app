@@ -4,7 +4,8 @@ import { Sidebar } from "../sidebar"
 import styles from "./home.module.scss"
 import { useSystemStore } from "../../store/system"
 import { Provider } from "react-redux"
-import { store } from "../../store/redux"
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from "../../store/redux"
 import { flatMenuItems } from "@/app/utils/menu"
 
 import { ErrorBoundary } from "../error";
@@ -17,6 +18,7 @@ import {
 import { useEffect, useState } from "react"
 import { useAppSelector } from "@/app/store/redux/hooks"
 import { MenuItem } from "@/app/types/menu"
+import allComponentsMap from "@/app/components"
 
 const useHasHydrated = () => {
     const [hasHydrated, setHasHydrated] = useState<boolean>(false);
@@ -60,11 +62,14 @@ function Screen() {
                     {flatMenuItems(menuItems).map((item:MenuItem) => {
                         return (
                             <Route
-                                path={item.path}
+                                path={item.key}
                                 key={item.key}
                                 element={
                                     <ErrorBoundary>
-                                        {item.component ? <item.component /> : null}
+                                        {(() => {
+                                            const Component = allComponentsMap.get(item.name);
+                                            return Component ? <Component /> : null;
+                                        })()}
                                     </ErrorBoundary>
                                 }
                             />
@@ -86,9 +91,11 @@ export default function Home(){
     return (
         <ErrorBoundary>
             <Provider store={store}>
-                <Router>
-                    <Screen />
-                </Router>
+                <PersistGate loading={<Loading />} persistor={persistor}>
+                    <Router>
+                        <Screen />
+                    </Router>
+                </PersistGate>
             </Provider>
         </ErrorBoundary>
     )

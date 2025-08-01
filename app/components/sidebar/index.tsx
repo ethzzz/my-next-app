@@ -45,9 +45,14 @@ export function Sidebar() {
         }
     }
 
+    // 初始化时设置默认选中的菜单项
     useEffect(() => {
-        navigate('/pages/ai-chat')
-    }, [menuItems])
+        if (!selectedItem && menuItems.length > 0) {
+            // 如果没有选中的项目，设置默认选中项
+            const defaultItem = '/pages/ai-chat'
+            dispatch(setSelectedItem(defaultItem))
+        }
+    }, [selectedItem, menuItems, dispatch])
 
     const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {
         dispatch(setExpandedItems(openKeys))
